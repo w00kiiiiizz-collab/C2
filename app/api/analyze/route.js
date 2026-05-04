@@ -47,7 +47,7 @@ export async function POST(req) {
     // Google Gemini API Setup
     const genAI = new GoogleGenerativeAI(apiKey);
     // Use gemini-1.5-pro for better data analysis and large context
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
     const chat = model.startChat({
       history: [
