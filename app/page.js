@@ -83,12 +83,15 @@ export default function Home() {
     setIsLoading(true);
 
     try {
+      // 용량이 너무 크면 Vercel/Next.js API 제한(4MB)에 걸리므로 1500줄로 자름
+      const payloadData = fileData.length > 1500 ? fileData.slice(0, 1500) : fileData;
+      
       const response = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           apiKey,
-          data: fileData,
+          data: payloadData,
           query: userMessage
         })
       });
